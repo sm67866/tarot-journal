@@ -26,7 +26,8 @@ h2 {
 }
 
 input,
-textarea {
+textarea,
+select {
     width: 100%;
     padding: 12px;
     margin-bottom: 10px;
