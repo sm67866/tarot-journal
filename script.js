@@ -19,17 +19,15 @@ form.addEventListener("submit", function(event) {
 
     localStorage.setItem("readings", JSON.stringify(readings));
 
-    displayReadings(); // 👈 THIS WAS MISSING / MISPLACED
+    displayReadings();
 
     form.reset();
 });
 
 function displayReadings() {
-
     entriesDiv.innerHTML = "";
 
     readings.forEach(function(reading) {
-
         entriesDiv.innerHTML += `
             <div class="entry">
                 <h3>${reading.date}</h3>
@@ -45,7 +43,6 @@ function displayReadings() {
 }
 
 function deleteReading(id) {
-
     readings = readings.filter(function(reading) {
         return reading.id !== id;
     });
