@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tarot Journal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>🔮 Tarot Journal</h1>
+
+    <form id="journalForm">
+
+        <input
+            type="date"
+            id="date"
+            required
+        >
+
+        <input
+            type="text"
+            id="cards"
+            placeholder="Cards Drawn"
+            required
+        >
+
+        <textarea
+            id="notes"
+            placeholder="Your interpretation..."
+            required
+        ></textarea>
+
+        <button type="submit">
+            Save Reading
+        </button>
+
+    </form>
+
+    <h2>Past Readings</h2>
+
+    <div id="entries"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
