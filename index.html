@@ -14,24 +14,19 @@
         <h1>🔮 Tarot Journal</h1>
 
         <form id="journalForm">
-            <input type="date" id="date" required>
+    <input type="date" id="date" required>
 
-<select id="arcana" required>
-    <option value="major">Major Arcana</option>
-    <option value="minor">Minor Arcana</option>
-</select>
+    <select id="spreadType" required>
+        <option value="one">One Card</option>
+        <option value="three">Past / Present / Future</option>
+    </select>
 
-<select id="card" required>
-</select>
+    <div id="cardFields"></div>
 
-<select id="orientation" required>
-    <option value="Upright">Upright</option>
-    <option value="Reversed">Reversed</option>
-</select>
-            <textarea id="notes" placeholder="Your interpretation..." required></textarea>
+    <textarea id="notes" placeholder="Your interpretation..." required></textarea>
 
-            <button type="submit">Save Reading</button>
-        </form>
+    <button type="submit">Save Reading</button>
+</form>
 
         <h2>Past Readings</h2>
 
