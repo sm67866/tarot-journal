@@ -7,21 +7,28 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <div class="container">
 
-<div class="container">
+        <h1>🔮 Tarot Journal</h1>
 
-    <h1>🌙 Tarot Journal 🔮</h1>
+        <form id="journalForm">
+            <input type="date" id="date" required>
 
-    <form id="journalForm">
-        
-    </form>
+            <input type="text" id="cards" placeholder="Cards Drawn" required>
 
-    <h2>Past Readings</h2>
+            <textarea id="notes" placeholder="Your interpretation..." required></textarea>
 
-    <div id="entries"></div>
+            <button type="submit">Save Reading</button>
+        </form>
 
-</div>
+        <h2>Past Readings</h2>
 
+        <div id="entries"></div>
+
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
