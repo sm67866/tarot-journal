@@ -98,18 +98,29 @@ function displayReadings() {
     entriesDiv.innerHTML = "";
 
     readings.forEach(function(reading) {
+
         const cardList = reading.cards.map(function(card) {
-            return `<p><strong>${card.position}:</strong> ${card.card} (${card.orientation})</p>`;
+            return `
+                <p>
+                    <strong>${card.position}:</strong>
+                    ${card.card} (${card.orientation})
+                </p>
+            `;
         }).join("");
 
         entriesDiv.innerHTML += `
             <div class="entry">
                 <h3>${reading.date}</h3>
+
                 <h4>${reading.spread}</h4>
 
                 ${cardList}
 
                 <p>${reading.notes}</p>
+
+                <button onclick="editReading(${reading.id})">
+                    Edit
+                </button>
 
                 <button onclick="deleteReading(${reading.id})">
                     Delete
@@ -127,4 +138,33 @@ function deleteReading(id) {
     localStorage.setItem("readings", JSON.stringify(readings));
 
     displayReadings();
+}
+function editReading(id) {
+
+    const reading = readings.find(function(reading) {
+        return reading.id === id;
+    });
+
+    document.getElementById("date").value = reading.date;
+    document.getElementById("notes").value = reading.notes;
+
+    if (reading.spread === "Past / Present / Future") {
+        spreadType.value = "three";
+    } else {
+        spreadType.value = "one";
+    }
+
+    renderCardFields();
+
+    reading.cards.forEach(function(card) {
+
+        document.getElementById(`${card.position}-card`).value =
+            card.card;
+
+        document.getElementById(`${card.position}-orientation`).value =
+            card.orientation;
+
+    });
+
+    deleteReading(id);
 }
