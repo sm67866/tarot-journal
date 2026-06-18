@@ -8,12 +8,15 @@ displayReadings();
 form.addEventListener("submit", function(event) {
     event.preventDefault();
 
-    const reading = {
-        id: Date.now(),
-        date: document.getElementById("date").value,
-        cards: document.getElementById("cards").value,
-        notes: document.getElementById("notes").value
-    };
+    const selectedCard = document.getElementById("card").value;
+const orientation = document.getElementById("orientation").value;
+
+const reading = {
+    id: Date.now(),
+    date: document.getElementById("date").value,
+    cards: `${selectedCard} (${orientation})`,
+    notes: document.getElementById("notes").value
+};
 
     readings.push(reading);
 
