@@ -34,9 +34,13 @@ function displayReadings() {
                 <strong>${reading.cards}</strong>
                 <p>${reading.notes}</p>
 
-                <button onclick="deleteReading(${reading.id})">
-                    Delete
-                </button>
+                <button onclick="editReading(${reading.id})">
+    Edit
+</button>
+
+<button onclick="deleteReading(${reading.id})">
+    Delete
+</button>
             </div>
         `;
     });
@@ -50,4 +54,16 @@ function deleteReading(id) {
     localStorage.setItem("readings", JSON.stringify(readings));
 
     displayReadings();
+}
+function editReading(id) {
+
+    const reading = readings.find(function(reading) {
+        return reading.id === id;
+    });
+
+    document.getElementById("date").value = reading.date;
+    document.getElementById("cards").value = reading.cards;
+    document.getElementById("notes").value = reading.notes;
+
+    deleteReading(id);
 }
