@@ -9,15 +9,23 @@ body {
 
 h1 {
     text-align: center;
+    text-shadow: 0 0 10px rgba(109, 91, 151, 0.7);
 }
 
 input,
 textarea,
 button {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-    box-sizing: border-box;
+    background: #6d5b97;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1rem;
+}
+
+button:hover {
+    cursor: pointer;
+    transform: scale(1.02);
 }
 
 button {
@@ -25,9 +33,8 @@ button {
 }
 
 .entry {
-    border: 1px solid #6d5b97;
+    border: 2px solid #6d5b97;
     border-radius: 12px;
-    padding: 15px;
-    margin-top: 15px;
     background: #1b1b2a;
+    padding: 20px;
 }
