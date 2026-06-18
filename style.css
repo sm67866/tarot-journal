@@ -1,20 +1,30 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     background: #0f0f16;
     color: #e6e0d4;
     font-family: 'Cormorant Garamond', serif;
+    margin: 0;
+}
+
+.container {
     max-width: 800px;
-    margin: auto;
+    margin: 0 auto;
     padding: 20px;
 }
 
-/* Title */
 h1 {
+    font-family: 'Cinzel', serif;
+    text-align: center;
     text-shadow: 0 0 10px rgba(109, 91, 151, 0.7);
-
-    box-sizing: border-box;
 }
 
-/* INPUTS + TEXT */
+h2 {
+    margin-top: 30px;
+}
+
 input,
 textarea {
     width: 100%;
@@ -31,13 +41,11 @@ textarea {
     border-radius: 8px;
 }
 
-/* TEXTAREA HEIGHT */
 textarea {
     min-height: 120px;
     resize: vertical;
 }
 
-/* BUTTON ONLY */
 button {
     width: 100%;
     padding: 12px;
@@ -59,11 +67,19 @@ button:hover {
     transform: scale(1.02);
 }
 
-/* ENTRIES */
 .entry {
     border: 2px solid #6d5b97;
     border-radius: 12px;
     background: #1b1b2a;
     padding: 20px;
     margin-top: 15px;
+}
+
+.entry button {
+    margin-top: 10px;
+    background: #3a1f3f;
+}
+
+.entry button:hover {
+    background: #5a2f63;
 }
