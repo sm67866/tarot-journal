@@ -10,3 +10,6 @@ Features:
 - Past / Present / Future spread
 - Upright and Reversed cards
 - Local storage
+
+## Version 1.1.0
+-Added tarot database integration and card meanings
