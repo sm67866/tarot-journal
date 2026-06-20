@@ -70,11 +70,13 @@ button:hover {
 }
 
 .entry {
-    border: 2px solid #6d5b97;
+    border: 1px solid #6d5b97;
     border-radius: 12px;
     background: #1b1b2a;
     padding: 20px;
-    margin-top: 15px;
+    margin-bottom: 20px;
+
+    box-shadow: 0 0 15px rgba(109, 91, 151, 0.15);
 }
 
 .entry button {
