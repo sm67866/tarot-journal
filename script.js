@@ -112,7 +112,7 @@ function displayReadings() {
                     <p><em>Meaning:</em> ${meaning}</p>
 
                     <details>
-                        <summary>My Interpretation</summary>
+                        <summary>Card Symbolism</summary>
                         <p>${description}</p>
                     </details>
                 </div>
@@ -125,9 +125,9 @@ function displayReadings() {
                 <h4>${reading.spread}</h4>
 
                 ${cardList}
-
+<h4>My Interpretation</h4>
                 <p>${reading.notes}</p>
-
+                
                 <button onclick="editReading(${reading.id})">
                     Edit
                 </button>
