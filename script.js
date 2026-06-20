@@ -125,7 +125,7 @@ function displayReadings() {
                 <h4>${reading.spread}</h4>
 
                 ${cardList}
-<h4>My Interpretation</h4>
+<h4>My Interpretation:</h4>
                 <p>${reading.notes}</p>
                 
                 <button onclick="editReading(${reading.id})">
