@@ -172,3 +172,42 @@ function editReading(id) {
 
     deleteReading(id);
 }
+function updateMeaningPreview() {
+    if (tarotCards.length === 0) {
+        return;
+    }
+
+    const positions = spreadType.value === "three"
+        ? ["Past", "Present", "Future"]
+        : ["Card"];
+
+    let previewHTML = `<h3>Card Meanings</h3>`;
+
+    positions.forEach(function(position) {
+        const selectedCard = document.getElementById(`${position}-card`).value;
+        const orientation = document.getElementById(`${position}-orientation`).value;
+        const info = tarotData[selectedCard];
+
+        if (!info) {
+            return;
+        }
+
+        const meaning = orientation === "Upright"
+            ? info.upright
+            : info.reversed;
+
+        previewHTML += `
+            <div class="preview-card">
+                <p><strong>${position}:</strong> ${selectedCard} (${orientation})</p>
+                <p><em>Meaning:</em> ${meaning}</p>
+
+                <details>
+                    <summary>Card Symbolism</summary>
+                    <p>${info.description}</p>
+                </details>
+            </div>
+        `;
+    });
+
+    meaningPreview.innerHTML = previewHTML;
+}
