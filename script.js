@@ -112,7 +112,7 @@ function displayReadings() {
                     <p><em>Meaning:</em> ${meaning}</p>
 
                     <details>
-                        <summary>Card Description</summary>
+                        <summary>My Interpretation</summary>
                         <p>${description}</p>
                     </details>
                 </div>
