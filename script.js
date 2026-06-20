@@ -117,10 +117,7 @@ function displayReadings() {
 
                     <p><em>Meaning:</em> ${meaning}</p>
 
-                    <details>
-                        <summary>Card Symbolism</summary>
-                        <p>${description}</p>
-                    </details>
+                    
                 </div>
             `;
         }).join("");
