@@ -3,40 +3,30 @@ const entriesDiv = document.getElementById("entries");
 const spreadType = document.getElementById("spreadType");
 const cardFields = document.getElementById("cardFields");
 
-const tarotCards = [
-    "The Fool", "The Magician", "The High Priestess", "The Empress",
-    "The Emperor", "The Hierophant", "The Lovers", "The Chariot",
-    "Strength", "The Hermit", "Wheel of Fortune", "Justice",
-    "The Hanged Man", "Death", "Temperance", "The Devil",
-    "The Tower", "The Star", "The Moon", "The Sun",
-    "Judgement", "The World",
-
-    "Ace of Cups", "Two of Cups", "Three of Cups", "Four of Cups",
-    "Five of Cups", "Six of Cups", "Seven of Cups", "Eight of Cups",
-    "Nine of Cups", "Ten of Cups", "Page of Cups", "Knight of Cups",
-    "Queen of Cups", "King of Cups",
-
-    "Ace of Wands", "Two of Wands", "Three of Wands", "Four of Wands",
-    "Five of Wands", "Six of Wands", "Seven of Wands", "Eight of Wands",
-    "Nine of Wands", "Ten of Wands", "Page of Wands", "Knight of Wands",
-    "Queen of Wands", "King of Wands",
-
-    "Ace of Swords", "Two of Swords", "Three of Swords", "Four of Swords",
-    "Five of Swords", "Six of Swords", "Seven of Swords", "Eight of Swords",
-    "Nine of Swords", "Ten of Swords", "Page of Swords", "Knight of Swords",
-    "Queen of Swords", "King of Swords",
-
-    "Ace of Pentacles", "Two of Pentacles", "Three of Pentacles",
-    "Four of Pentacles", "Five of Pentacles", "Six of Pentacles",
-    "Seven of Pentacles", "Eight of Pentacles", "Nine of Pentacles",
-    "Ten of Pentacles", "Page of Pentacles", "Knight of Pentacles",
-    "Queen of Pentacles", "King of Pentacles"
-];
-
+let tarotCards = [];
+let tarotData = {};
 let readings = JSON.parse(localStorage.getItem("readings")) || [];
 
-renderCardFields();
-displayReadings();
+Papa.parse("export.csv", {
+    download: true,
+    header: true,
+    complete: function(results) {
+        results.data.forEach(function(card) {
+            if (card.label) {
+                tarotCards.push(card.label);
+
+                tarotData[card.label] = {
+                    description: card.description,
+                    upright: card.description_endroit,
+                    reversed: card.description_envers
+                };
+            }
+        });
+
+        renderCardFields();
+        displayReadings();
+    }
+});
 
 spreadType.addEventListener("change", renderCardFields);
 
@@ -98,20 +88,40 @@ function displayReadings() {
     entriesDiv.innerHTML = "";
 
     readings.forEach(function(reading) {
-
         const cardList = reading.cards.map(function(card) {
+            const info = tarotData[card.card];
+
+            let meaning = "Meaning not found.";
+            let description = "Description not found.";
+
+            if (info) {
+                meaning = card.orientation === "Upright"
+                    ? info.upright
+                    : info.reversed;
+
+                description = info.description;
+            }
+
             return `
-                <p>
-                    <strong>${card.position}:</strong>
-                    ${card.card} (${card.orientation})
-                </p>
+                <div class="card-meaning">
+                    <p>
+                        <strong>${card.position}:</strong>
+                        ${card.card} (${card.orientation})
+                    </p>
+
+                    <p><em>Meaning:</em> ${meaning}</p>
+
+                    <details>
+                        <summary>Card Description</summary>
+                        <p>${description}</p>
+                    </details>
+                </div>
             `;
         }).join("");
 
         entriesDiv.innerHTML += `
             <div class="entry">
                 <h3>${reading.date}</h3>
-
                 <h4>${reading.spread}</h4>
 
                 ${cardList}
@@ -139,8 +149,8 @@ function deleteReading(id) {
 
     displayReadings();
 }
-function editReading(id) {
 
+function editReading(id) {
     const reading = readings.find(function(reading) {
         return reading.id === id;
     });
@@ -148,22 +158,13 @@ function editReading(id) {
     document.getElementById("date").value = reading.date;
     document.getElementById("notes").value = reading.notes;
 
-    if (reading.spread === "Past / Present / Future") {
-        spreadType.value = "three";
-    } else {
-        spreadType.value = "one";
-    }
+    spreadType.value = reading.spread === "Past / Present / Future" ? "three" : "one";
 
     renderCardFields();
 
     reading.cards.forEach(function(card) {
-
-        document.getElementById(`${card.position}-card`).value =
-            card.card;
-
-        document.getElementById(`${card.position}-orientation`).value =
-            card.orientation;
-
+        document.getElementById(`${card.position}-card`).value = card.card;
+        document.getElementById(`${card.position}-orientation`).value = card.orientation;
     });
 
     deleteReading(id);
