@@ -2,6 +2,8 @@ const form = document.getElementById("journalForm");
 const entriesDiv = document.getElementById("entries");
 const spreadType = document.getElementById("spreadType");
 const cardFields = document.getElementById("cardFields");
+const meaningPreview = document.getElementById("meaningPreview");
+
 
 let tarotCards = [];
 let tarotData = {};
