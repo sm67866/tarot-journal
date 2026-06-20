@@ -84,6 +84,7 @@ function renderCardFields() {
             </select>
         `;
     });
+    updateMeaningPreview();
 }
 
 function displayReadings() {
