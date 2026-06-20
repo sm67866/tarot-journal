@@ -13,3 +13,6 @@ Features:
 
 ## Version 1.1.0
 -Added tarot database integration and card meanings
+
+## Version 1.2.0
+-Added live tarot meaning preview
