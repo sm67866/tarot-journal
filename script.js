@@ -85,6 +85,9 @@ function renderCardFields() {
         `;
     });
     updateMeaningPreview();
+    document.querySelectorAll("#cardFields select").forEach(function(select) {
+    select.addEventListener("change", updateMeaningPreview);
+});
 }
 
 function displayReadings() {
