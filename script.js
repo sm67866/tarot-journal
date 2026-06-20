@@ -201,10 +201,7 @@ function updateMeaningPreview() {
                 <p><strong>${position}:</strong> ${selectedCard} (${orientation})</p>
                 <p><em>Meaning:</em> ${meaning}</p>
 
-                <details>
-                    <summary>Card Symbolism</summary>
-                    <p>${info.description}</p>
-                </details>
+              
             </div>
         `;
     });
