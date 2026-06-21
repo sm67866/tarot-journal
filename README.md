@@ -22,3 +22,8 @@ Features:
 - Added Situation / Obstacle / Advice spread
 - Added Mind / Body / Spirit Spread
 - Refactored spread handling with helper functions
+
+## Version 1.4.1
+- Added Rider-Waite tarot card images
+- Fixed image mapping issues
+- Improved visual card preview experience
