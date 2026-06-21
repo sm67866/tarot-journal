@@ -250,6 +250,7 @@ function getSpreadName() {
 
 
 function getCardImage(cardName) {
+    console.log(cardName);
     const majorArcana = {
         "The Fool": "00-TheFool.jpg",
         "The Magician": "01-TheMagician.jpg",
