@@ -251,6 +251,10 @@ function getSpreadName() {
 
 function getCardImage(cardName) {
     console.log(cardName);
+
+     if (cardName === "Wheel Of Fortune" || cardName === "Wheel of Fortune") {
+        return "images/10-WheelofFortune.jpg";
+    }
     const majorArcana = {
         "The Fool": "00-TheFool.jpg",
         "The Magician": "01-TheMagician.jpg",
