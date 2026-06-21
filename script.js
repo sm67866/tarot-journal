@@ -250,61 +250,66 @@ function getSpreadName() {
 
 
 function getCardImage(cardName) {
-    console.log(cardName);
+    const normalizedCardName = cardName.trim().toLowerCase();
 
-     if (cardName === "Wheel Of Fortune" || cardName === "Wheel of Fortune") {
-        return "images/10-WheelofFortune.jpg";
-    }
     const majorArcana = {
-        "The Fool": "00-TheFool.jpg",
-        "The Magician": "01-TheMagician.jpg",
-        "The High Priestess": "02-TheHighPriestess.jpg",
-        "The Empress": "03-TheEmpress.jpg",
-        "The Emperor": "04-TheEmperor.jpg",
-        "The Hierophant": "05-TheHierophant.jpg",
-        "The Lovers": "06-TheLovers.jpg",
-        "The Chariot": "07-TheChariot.jpg",
-        "Strength": "08-Strength.jpg",
-        "The Hermit": "09-TheHermit.jpg",
-        "Wheel Of Fortune": "10-WheelofFortune.jpg",
-        "Wheel Of Fortune": "10-WheelofFortune.jpg",
-        "Justice": "11-Justice.jpg",
-        "The Hanged Man": "12-TheHangedMan.jpg",
-        "Death": "13-Death.jpg",
-        "Temperance": "14-Temperance.jpg",
-        "The Devil": "15-TheDevil.jpg",
-        "The Tower": "16-TheTower.jpg",
-        "The Star": "17-TheStar.jpg",
-        "The Moon": "18-TheMoon.jpg",
-        "The Sun": "19-TheSun.jpg",
-        "Judgement": "20-Judgement.jpg",
-        "The World": "21-TheWorld.jpg"
+        "the fool": "00-TheFool.jpg",
+        "the magician": "01-TheMagician.jpg",
+        "the high priestess": "02-TheHighPriestess.jpg",
+        "the empress": "03-TheEmpress.jpg",
+        "the emperor": "04-TheEmperor.jpg",
+        "the hierophant": "05-TheHierophant.jpg",
+        "the lovers": "06-TheLovers.jpg",
+        "the chariot": "07-TheChariot.jpg",
+        "strength": "08-Strength.jpg",
+        "the hermit": "09-TheHermit.jpg",
+        "wheel of fortune": "10-WheelofFortune.jpg",
+        "wheel of fortune": "10-WheelofFortune.jpg",
+        "justice": "11-Justice.jpg",
+        "the hanged man": "12-TheHangedMan.jpg",
+        "death": "13-Death.jpg",
+        "temperance": "14-Temperance.jpg",
+        "the devil": "15-TheDevil.jpg",
+        "the tower": "16-TheTower.jpg",
+        "the star": "17-TheStar.jpg",
+        "the moon": "18-TheMoon.jpg",
+        "the sun": "19-TheSun.jpg",
+        "judgement": "20-Judgement.jpg",
+        "the world": "21-TheWorld.jpg"
     };
 
-    if (majorArcana[cardName]) {
-        return `images/${majorArcana[cardName]}`;
+    if (majorArcana[normalizedCardName]) {
+        return `images/${majorArcana[normalizedCardName]}`;
     }
 
     const cardNumbers = {
-        "Ace": "01",
-        "Two": "02",
-        "Three": "03",
-        "Four": "04",
-        "Five": "05",
-        "Six": "06",
-        "Seven": "07",
-        "Eight": "08",
-        "Nine": "09",
-        "Ten": "10",
-        "Page": "11",
-        "Knight": "12",
-        "Queen": "13",
-        "King": "14"
+        "ace": "01",
+        "two": "02",
+        "three": "03",
+        "four": "04",
+        "five": "05",
+        "six": "06",
+        "seven": "07",
+        "eight": "08",
+        "nine": "09",
+        "ten": "10",
+        "page": "11",
+        "knight": "12",
+        "queen": "13",
+        "king": "14"
     };
 
-    const parts = cardName.split(" of ");
+    const parts = normalizedCardName.split(" of ");
     const number = cardNumbers[parts[0]];
     const suit = parts[1];
 
-    return `images/${suit}${number}.jpg`;
+    if (!number || !suit) {
+        console.log("No image match for:", cardName);
+        return "";
+    }
+
+    const formattedSuit = suit.charAt(0).toUpperCase() + suit.slice(1);
+
+    return `images/${formattedSuit}${number}.jpg`;
 }
+
