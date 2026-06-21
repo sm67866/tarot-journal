@@ -35,10 +35,7 @@ spreadType.addEventListener("change", renderCardFields);
 form.addEventListener("submit", function(event) {
     event.preventDefault();
 
-    const positions = spreadType.value === "three"
-        ? ["Past", "Present", "Future"]
-        : ["Card"];
-
+   const positions = getSpreadPositions();
     const cards = positions.map(function(position) {
         return {
             position: position,
@@ -50,7 +47,7 @@ form.addEventListener("submit", function(event) {
     const reading = {
         id: Date.now(),
         date: document.getElementById("date").value,
-        spread: spreadType.value === "three" ? "Past / Present / Future" : "One Card",
+        spread: getSpreadName(),
         cards: cards,
         notes: document.getElementById("notes").value
     };
@@ -64,9 +61,7 @@ form.addEventListener("submit", function(event) {
 });
 
 function renderCardFields() {
-    const positions = spreadType.value === "three"
-        ? ["Past", "Present", "Future"]
-        : ["Card"];
+    const positions = getSpreadPositions();
 
     cardFields.innerHTML = "";
 
@@ -177,9 +172,7 @@ function updateMeaningPreview() {
         return;
     }
 
-    const positions = spreadType.value === "three"
-        ? ["Past", "Present", "Future"]
-        : ["Card"];
+    const positions = getSpreadPositions();
 
     let previewHTML = `<h3>Card Meanings</h3>`;
 
@@ -207,4 +200,43 @@ function updateMeaningPreview() {
     });
 
     meaningPreview.innerHTML = previewHTML;
+}
+function getSpreadPositions() {
+    if (spreadType.value === "three") {
+        return ["Past", "Present", "Future"];
+    }
+
+    if (spreadType.value === "problem") {
+        return ["Problem", "Advice", "Outcome"];
+    }
+
+    if (spreadType.value === "situation") {
+        return ["Situation", "Obstacle", "Advice"];
+    }
+
+    if (spreadType.value === "mindbody") {
+        return ["Mind", "Body", "Spirit"];
+    }
+
+    return ["Card"];
+}
+
+function getSpreadName() {
+    if (spreadType.value === "three") {
+        return "Past / Present / Future";
+    }
+
+    if (spreadType.value === "problem") {
+        return "Problem / Advice / Outcome";
+    }
+
+    if (spreadType.value === "situation") {
+        return "Situation / Obstacle / Advice";
+    }
+
+    if (spreadType.value === "mindbody") {
+        return "Mind / Body / Spirit";
+    }
+
+    return "One Card";
 }
