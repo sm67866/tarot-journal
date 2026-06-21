@@ -193,16 +193,17 @@ function updateMeaningPreview() {
             : info.reversed;
 
         previewHTML += `
-            <div class="preview-card">
-                <p><strong>${position}:</strong> ${selectedCard} (${orientation})</p>
-                <details>
-    <summary>Meaning</summary>
-    <p>${meaning}</p>
-</details>
+    <div class="preview-card">
+        <img class="tarot-card-img" src="${getCardImage(selectedCard)}" alt="${selectedCard}">
 
-              
-            </div>
-        `;
+        <p><strong>${position}:</strong> ${selectedCard} (${orientation})</p>
+
+        <details>
+            <summary>Meaning</summary>
+            <p>${meaning}</p>
+        </details>
+    </div>
+`;
     });
 
     meaningPreview.innerHTML = previewHTML;
