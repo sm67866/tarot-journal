@@ -262,7 +262,7 @@ function getCardImage(cardName) {
         "The Chariot": "07-TheChariot.jpg",
         "Strength": "08-Strength.jpg",
         "The Hermit": "09-TheHermit.jpg",
-        "Wheel of Fortune": "10-WheelofFortune.jpg",
+        "Wheel Of Fortune": "10-WheelofFortune.jpg",
         "Justice": "11-Justice.jpg",
         "The Hanged Man": "12-TheHangedMan.jpg",
         "Death": "13-Death.jpg",
