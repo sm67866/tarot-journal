@@ -110,7 +110,10 @@ function displayReadings() {
                         ${card.card} (${card.orientation})
                     </p>
 
-                    <p><em>Meaning:</em> ${meaning}</p>
+                    <details>
+    <summary>Meaning</summary>
+    <p>${meaning}</p>
+</details>
 
                     
                 </div>
@@ -192,7 +195,10 @@ function updateMeaningPreview() {
         previewHTML += `
             <div class="preview-card">
                 <p><strong>${position}:</strong> ${selectedCard} (${orientation})</p>
-                <p><em>Meaning:</em> ${meaning}</p>
+                <details>
+    <summary>Meaning</summary>
+    <p>${meaning}</p>
+</details>
 
               
             </div>
