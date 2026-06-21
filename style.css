@@ -96,3 +96,13 @@ summary {
     cursor: pointer;
     font-weight: bold;
 }
+
+.tarot-card-img {
+    display: block;
+    max-width: 140px;
+    width: 100%;
+    height: auto;
+    margin: 10px auto 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(109, 91, 151, 0.35);
+}
