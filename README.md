@@ -15,4 +15,10 @@ Features:
 -Added tarot database integration and card meanings
 
 ## Version 1.2.0
--Added live tarot meaning preview
+- Added live tarot meaning preview
+
+## Version 1.3.0
+- Added Problem / Advice / Outcome spread
+- Added Situation / Obstacle / Advice spread
+- Added Mind / Body / Spirit Spread
+- Refactored spread handling with helper functions
