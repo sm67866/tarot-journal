@@ -87,3 +87,12 @@ button:hover {
 .entry button:hover {
     background: #5a2f63;
 }
+
+details {
+    margin-top: 8px;
+}
+
+summary {
+    cursor: pointer;
+    font-weight: bold;
+}
