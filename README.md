@@ -27,3 +27,6 @@ Features:
 - Added Rider-Waite tarot card images
 - Fixed image mapping issues
 - Improved visual card preview experience
+
+## Version 1.5.0
+- Added Search feature
