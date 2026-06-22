@@ -5,6 +5,7 @@ const cardFields = document.getElementById("cardFields");
 const meaningPreview = document.getElementById("meaningPreview");
 const searchInput = document.getElementById("searchInput");
 
+
 let tarotCards = [];
 let tarotData = {};
 let readings = JSON.parse(localStorage.getItem("readings")) || [];
@@ -31,7 +32,7 @@ Papa.parse("export.csv", {
 });
 
 spreadType.addEventListener("change", renderCardFields);
-
+searchInput.addEventListener("input", displayReadings);
 form.addEventListener("submit", function(event) {
     event.preventDefault();
 
