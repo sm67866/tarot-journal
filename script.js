@@ -3,7 +3,7 @@ const entriesDiv = document.getElementById("entries");
 const spreadType = document.getElementById("spreadType");
 const cardFields = document.getElementById("cardFields");
 const meaningPreview = document.getElementById("meaningPreview");
-
+const searchInput = document.getElementById("searchInput");
 
 let tarotCards = [];
 let tarotData = {};
@@ -88,7 +88,24 @@ function renderCardFields() {
 function displayReadings() {
     entriesDiv.innerHTML = "";
 
-    readings.forEach(function(reading) {
+    const searchTerm = searchInput.value.toLowerCase();
+
+    const filteredReadings = readings.filter(function(reading) {
+        const cardsText = reading.cards.map(function(card) {
+            return `${card.position} ${card.card} ${card.orientation}`;
+        }).join(" ");
+
+        const fullText = `
+            ${reading.date}
+            ${reading.spread}
+            ${cardsText}
+            ${reading.notes}
+        `.toLowerCase();
+
+        return fullText.includes(searchTerm);
+    });
+
+    filteredReadings.forEach(function(reading) {
         const cardList = reading.cards.map(function(card) {
             const info = tarotData[card.card];
 
